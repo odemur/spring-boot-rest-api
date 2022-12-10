@@ -143,8 +143,8 @@ Create a new Customer from JSON structure.
             "email": "john@mail.com"
        }, 
        {
-       ...
-       }]
+            "..."
+      }]
        ```
   
 ### List Customer by Id
