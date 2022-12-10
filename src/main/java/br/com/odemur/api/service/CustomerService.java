@@ -1,21 +1,17 @@
 package br.com.odemur.api.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import br.com.odemur.api.model.Customer;
 import br.com.odemur.api.repository.CustomerRepository;
 
-/**
- * CustomerService Class
- *
- * @author Odemur Marangoni
- * @version 1.0
- */
-@Component
+@Service
 public class CustomerService {
+
 	@Autowired
 	private CustomerRepository customerRepository;
 
@@ -23,25 +19,37 @@ public class CustomerService {
 		return customerRepository.findAll();
 	}
 
-	public Customer getById(Long id) {
-		return customerRepository.findById(id).get();
+	public Optional<Customer> findById(long id) {
+		return customerRepository.findById(id);
 	}
 
 	public Customer save(Customer customer) {
 		return customerRepository.save(customer);
 	}
 
-	public Customer update(Long id, Customer updateCustomer) {
-		Customer customer = customerRepository.getOne(id);
+	public void saveAll(List<Customer> customer) {
+		customerRepository.saveAll(customer);
+	}
 
-		customer.setFirstName(updateCustomer.getFirstName());
-		customer.setLastName(updateCustomer.getLastName());
-		customer.setEmail(updateCustomer.getEmail());
+	public Customer update(long id, Customer updateCustomer) {
+		Customer customer = customerRepository.findById(id).get();
+
+		if (updateCustomer.getFirstName() != null) {
+			customer.setFirstName(updateCustomer.getFirstName());
+		}
+
+		if (updateCustomer.getLastName() != null) {
+			customer.setLastName(updateCustomer.getLastName());
+		}
+
+		if (updateCustomer.getEmail() != null) {
+			customer.setEmail(updateCustomer.getEmail());
+		}
 
 		return customerRepository.save(customer);
 	}
 
-	public void delete(Long id) {
+	public void delete(long id) {
 		customerRepository.deleteById(id);
 	}
 

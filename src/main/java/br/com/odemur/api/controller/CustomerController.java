@@ -1,9 +1,10 @@
 package br.com.odemur.api.controller;
 
-import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,14 +30,19 @@ public class CustomerController {
 	private CustomerService customerService;
 
 	@GetMapping("/customer")
-	public List<Customer> getAll() {
+	public Iterable<Customer> list() {
 		return customerService.list();
 	}
 
 	@GetMapping("/customer/{id}")
-	@ResponseStatus(HttpStatus.OK)
-	public Customer getCustomerById(@PathVariable Long id) {
-		return customerService.getById(id);
+	public ResponseEntity<Customer> findCustomerById(@PathVariable("id") long id) {
+
+		Optional<Customer> customer = customerService.findById(id);
+		if (customer.isPresent())
+			return ResponseEntity.ok().body(customer.get());
+		else
+			return ResponseEntity.notFound().build();
+
 	}
 
 	@PostMapping("/customer")
@@ -46,13 +52,24 @@ public class CustomerController {
 	}
 
 	@PutMapping("/customer/{id}")
-	public Customer updateCustomer(@PathVariable(value = "id") Long id, @RequestBody Customer customer) {
-		return customerService.update(id, customer);
+	public ResponseEntity<Customer> Put(@PathVariable("id") long id, @RequestBody Customer updateCustomer) {
+
+		Optional<Customer> customer = customerService.findById(id);
+		if (customer.isPresent())
+			return ResponseEntity.ok().body(customerService.update(id, updateCustomer));
+		else
+			return ResponseEntity.notFound().build();
 	}
 
 	@DeleteMapping("/customer/{id}")
-	public void deleteCustomer(@PathVariable Long id) {
-		customerService.delete(id);
+	public ResponseEntity<Customer> deleteCustomer(@PathVariable("id") long id) {
+
+		Optional<Customer> customer = customerService.findById(id);
+		if (customer.isPresent()) {
+			customerService.delete(id);
+			return new ResponseEntity<>(HttpStatus.OK);
+		} else
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
 
 }

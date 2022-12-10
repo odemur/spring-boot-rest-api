@@ -2,7 +2,9 @@ package br.com.odemur.api.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  * Customer Class.
@@ -11,10 +13,11 @@ import javax.persistence.Id;
  * @version 1.0
  */
 @Entity
+@Table(name = "customer")
 public class Customer {
 	@Id
-	@GeneratedValue
-	private Long id;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private long id;
 	private String firstName;
 	private String lastName;
 	private String email;
@@ -23,11 +26,11 @@ public class Customer {
 
 	}
 
-	public Long getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
@@ -53,11 +56,6 @@ public class Customer {
 
 	public void setEmail(String email) {
 		this.email = email;
-	}
-
-	@Override
-	public String toString() {
-		return "Customer [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + "]";
 	}
 
 }

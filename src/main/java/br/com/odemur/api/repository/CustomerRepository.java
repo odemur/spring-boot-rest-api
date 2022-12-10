@@ -13,5 +13,5 @@ import br.com.odemur.api.model.Customer;
  */
 @Repository
 public interface CustomerRepository extends JpaRepository<Customer, Long>{
-
+	
 }
