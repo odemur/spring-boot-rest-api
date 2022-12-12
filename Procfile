@@ -1,1 +1,0 @@
-web: java -jar target/spring-boot-rest-api-1.0.jar
