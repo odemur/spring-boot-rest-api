@@ -9,6 +9,12 @@ import org.springframework.stereotype.Service;
 import br.com.odemur.api.model.Customer;
 import br.com.odemur.api.repository.CustomerRepository;
 
+/**
+ * CustomerService Class
+ *
+ * @author Odemur Marangoni
+ * @version 1.0
+ */
 @Service
 public class CustomerService {
 

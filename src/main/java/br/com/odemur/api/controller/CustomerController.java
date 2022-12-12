@@ -5,12 +5,10 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -29,12 +27,14 @@ public class CustomerController {
 	@Autowired
 	private CustomerService customerService;
 
-	@GetMapping("/customer")
+	// @GetMapping("/customer")
+	@RequestMapping(value = "/customer", method = RequestMethod.GET, produces = "application/json")
 	public Iterable<Customer> list() {
 		return customerService.list();
 	}
 
-	@GetMapping("/customer/{id}")
+	// @GetMapping("/customer/{id}")
+	@RequestMapping(value = "/customer/{id}", method = RequestMethod.GET, produces = "application/json")
 	public ResponseEntity<Customer> findCustomerById(@PathVariable("id") long id) {
 
 		Optional<Customer> customer = customerService.findById(id);
@@ -45,13 +45,15 @@ public class CustomerController {
 
 	}
 
-	@PostMapping("/customer")
+	// @PostMapping("/customer")
+	@RequestMapping(value = "/customer", method = RequestMethod.POST, produces = "application/json")
 	@ResponseStatus(HttpStatus.CREATED)
 	public Customer saveCustomer(@RequestBody Customer customer) {
 		return customerService.save(customer);
 	}
 
-	@PutMapping("/customer/{id}")
+	// @PutMapping("/customer/{id}")
+	@RequestMapping(value = "/customer/{id}", method = RequestMethod.PUT, produces = "application/json")
 	public ResponseEntity<Customer> Put(@PathVariable("id") long id, @RequestBody Customer updateCustomer) {
 
 		Optional<Customer> customer = customerService.findById(id);
@@ -61,7 +63,8 @@ public class CustomerController {
 			return ResponseEntity.notFound().build();
 	}
 
-	@DeleteMapping("/customer/{id}")
+	// @DeleteMapping("/customer/{id}")
+	@RequestMapping(value = "/customer/{id}", method = RequestMethod.DELETE, produces = "application/json")
 	public ResponseEntity<Customer> deleteCustomer(@PathVariable("id") long id) {
 
 		Optional<Customer> customer = customerService.findById(id);
