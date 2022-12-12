@@ -1,6 +1,0 @@
-br/com/odemur/api/SpringBootRestApiApplication.class
-br/com/odemur/api/controller/CustomerController.class
-br/com/odemur/api/repository/CustomerRepository.class
-br/com/odemur/api/model/Customer.class
-br/com/odemur/api/SwaggerConfig.class
-br/com/odemur/api/service/CustomerService.class

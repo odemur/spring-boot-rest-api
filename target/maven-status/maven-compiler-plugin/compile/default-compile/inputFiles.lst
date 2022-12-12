@@ -1,6 +1,0 @@
-/Users/smith/workspace-spring/spring-boot-rest-api/src/main/java/br/com/odemur/api/SpringBootRestApiApplication.java
-/Users/smith/workspace-spring/spring-boot-rest-api/src/main/java/br/com/odemur/api/controller/CustomerController.java
-/Users/smith/workspace-spring/spring-boot-rest-api/src/main/java/br/com/odemur/api/SwaggerConfig.java
-/Users/smith/workspace-spring/spring-boot-rest-api/src/main/java/br/com/odemur/api/repository/CustomerRepository.java
-/Users/smith/workspace-spring/spring-boot-rest-api/src/main/java/br/com/odemur/api/service/CustomerService.java
-/Users/smith/workspace-spring/spring-boot-rest-api/src/main/java/br/com/odemur/api/model/Customer.java
