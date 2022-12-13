@@ -18,12 +18,25 @@ import springfox.documentation.swagger.web.OperationsSorter;
 import springfox.documentation.swagger.web.TagsSorter;
 import springfox.documentation.swagger.web.UiConfiguration;
 import springfox.documentation.swagger.web.UiConfigurationBuilder;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @Configuration
+@EnableSwagger2
 @EnableWebMvc
 public class SwaggerConfig implements WebMvcConfigurer {
 
-    private ApiInfo apiInfoMetaData() {
+	@Bean
+    public Docket api() {
+    	return new Docket(DocumentationType.SWAGGER_2)
+        		.select()
+                .apis(RequestHandlerSelectors.basePackage("br.com.odemur.api.controller"))
+                .paths(PathSelectors.regex("/.*"))
+                .build()
+                .useDefaultResponseMessages(false)
+                .apiInfo(apiInfoMetaData());
+    }
+	
+	private ApiInfo apiInfoMetaData() {
         return new ApiInfoBuilder().title("REST API")
                 .description("REST API built on Java and Spring Boot.")
                 .contact(new Contact("Developer", "https://odemur.com.br/", "dev@odemur.com.br"))
@@ -33,18 +46,6 @@ public class SwaggerConfig implements WebMvcConfigurer {
                 .build();
     }
     
-	@Bean
-    public Docket api() {
-    	return new Docket(DocumentationType.SWAGGER_2)
-        		.select()
-                .apis(RequestHandlerSelectors.basePackage("br.com.odemur.api.controller"))
-                .paths(PathSelectors.regex("/.*"))
-                .build()
-                //.useDefaultResponseMessages(false)
-                .apiInfo(apiInfoMetaData());
-    }
-    
-    @Bean
     UiConfiguration uiConfig() {
         return UiConfigurationBuilder.builder()
                 .deepLinking(true)

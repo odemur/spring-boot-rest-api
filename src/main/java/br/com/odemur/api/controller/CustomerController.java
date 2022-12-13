@@ -1,5 +1,6 @@
 package br.com.odemur.api.controller;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,34 +28,24 @@ public class CustomerController {
 	@Autowired
 	private CustomerService customerService;
 
-	// @GetMapping("/customer")
 	@RequestMapping(value = "/customer", method = RequestMethod.GET, produces = "application/json")
-	public Iterable<Customer> list() {
+	public List<Customer> listCustomer() {
 		return customerService.list();
 	}
 
-	// @GetMapping("/customer/{id}")
 	@RequestMapping(value = "/customer/{id}", method = RequestMethod.GET, produces = "application/json")
-	public ResponseEntity<Customer> findCustomerById(@PathVariable("id") long id) {
-
-		Optional<Customer> customer = customerService.findById(id);
-		if (customer.isPresent())
-			return ResponseEntity.ok().body(customer.get());
-		else
-			return ResponseEntity.notFound().build();
-
+	public Optional<Customer> findCustomerById(@PathVariable(value = "id") long id) {
+		return customerService.findById(id);
 	}
 
-	// @PostMapping("/customer")
 	@RequestMapping(value = "/customer", method = RequestMethod.POST, produces = "application/json")
 	@ResponseStatus(HttpStatus.CREATED)
 	public Customer saveCustomer(@RequestBody Customer customer) {
 		return customerService.save(customer);
 	}
 
-	// @PutMapping("/customer/{id}")
 	@RequestMapping(value = "/customer/{id}", method = RequestMethod.PUT, produces = "application/json")
-	public ResponseEntity<Customer> Put(@PathVariable("id") long id, @RequestBody Customer updateCustomer) {
+	public ResponseEntity<Customer> updateCustomer(@PathVariable("id") long id, @RequestBody Customer updateCustomer) {
 
 		Optional<Customer> customer = customerService.findById(id);
 		if (customer.isPresent())
@@ -63,7 +54,6 @@ public class CustomerController {
 			return ResponseEntity.notFound().build();
 	}
 
-	// @DeleteMapping("/customer/{id}")
 	@RequestMapping(value = "/customer/{id}", method = RequestMethod.DELETE, produces = "application/json")
 	public ResponseEntity<Customer> deleteCustomer(@PathVariable("id") long id) {
 
