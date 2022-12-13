@@ -1,5 +1,5 @@
 # REST API built on Java and Spring Boot
-A REST API Application built on Java, Spring Boot, H2, PostgreSQL and MySQL Server.
+A REST API built on Java, Spring Boot and H2, PostgreSQL or MySQL Server database.
 
 ## Live demo on Heroku
 **Endpoint for requests:** <br />
@@ -17,8 +17,8 @@ https://odemur-spring-boot-rest-api.herokuapp.com/swagger-ui/index.html#/custome
   * Language: **Java**
   * Framework: **Spring Boot**
   * Build Automation Tool: **Apache Maven**
-  * Database [default]: **PostgreSQL**
-  * Database: **MySQL** 
+  * Database [default]: **H2**
+  * Supported Database: **PostgreSQL and MySQL Server** 
   * Service API: **REST**
 
 ## Getting Started
@@ -36,7 +36,7 @@ Please follow carefully step by step instructions below:
 
 ### Using Docker for database
 
-   * For PostgreSQL database:
+   * For PostgreSQL:
 
    ```bash
    docker run --name postgres -p 5432:5432 -e POSTGRES_PASSWORD=123 -d postgres
@@ -45,7 +45,7 @@ Please follow carefully step by step instructions below:
    docker exec -it postgres psql -U postgres 
    ```
 
-   * For MySQL database:
+   * For MySQL:
    ```bash
    docker run --name=mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=123 -d mysql/mysql-server:5.7
    ```
@@ -53,7 +53,6 @@ Please follow carefully step by step instructions below:
    docker exec -it mysql mysql -uroot -p 
    ```
 
-   **NOTE:** <br />
    Please create a database with the name: **customer** 
    ```
    CREATE DATABASE customer;
@@ -77,9 +76,8 @@ Please follow carefully step by step instructions below:
 
 2. Edit the file **"application.properties"** on the directory "src/main/resorces". <br />
 
-**Parameters for PostgreSQL Database**
+**Parameters for PostgreSQL**
 ```
-#Parameters for PostgreSQL Database 
 #spring.datasource.url = jdbc:postgresql://localhost:5432/customer
 #spring.datasource.username	= postgres
 #spring.datasource.password	= 123
@@ -87,7 +85,7 @@ Please follow carefully step by step instructions below:
 #spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.PostgreSQLDialect
 ```
 
-## Notes to user MySQL
+## Notes to use MySQL
 
 1. Add MySQL dependencies on file **pom.xml**
 
@@ -100,7 +98,7 @@ Please follow carefully step by step instructions below:
 ```
 2. Edit the file **"application.properties"** on the directory "src/main/resorces". <br />
 
-**Parameters for MySQL Database**
+**Parameters for MySQL**
 ```
 spring.datasource.url = jdbc:mysql://localhost:3306/customer
 spring.datasource.username = root
