@@ -1,5 +1,17 @@
 # REST API built on Java and Spring Boot
-A REST API Application built on Java, Spring Boot and PostgreSQL.
+A REST API Application built on Java, Spring Boot, H2, PostgreSQL and MySQL Server.
+
+## Live demo on Heroku
+**Endpoint for requests:** <br />
+https://odemur-spring-boot-rest-api.herokuapp.com/customer
+
+**URL Swagger UI:** <br />
+https://odemur-spring-boot-rest-api.herokuapp.com/swagger-ui/index.html#/customer-controller
+
+## Screenshot
+
+![REST API Spring Boot and Postman](https://odemur.com.br/wp-content/uploads/2022/12/spring-boot-rest-api-postman.png)
+![REST API Spring Boot and Swagger UI](https://odemur.com.br/wp-content/uploads/2022/12/spring-boot-rest-api-swagger-ui.png)
 
 ## Technologies
   * Language: **Java**
@@ -9,18 +21,6 @@ A REST API Application built on Java, Spring Boot and PostgreSQL.
   * Database: **MySQL** 
   * Service API: **REST**
 
-## Notes for MySQL
-Edit the file **"application.properties"** on the directory "src/main/resorces". <br />
-
-**Parameters for MySQL Database:**
-```
-spring.datasource.url = jdbc:mysql://localhost:3306/customer
-spring.datasource.username = root
-spring.datasource.password = 123
-spring.jpa.hibernate.ddl-auto = update
-spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.MySQL5Dialect
-```
-
 ## Getting Started
 Clone this project and running on you local machine. <br />
 Only for development and testing purposes.
@@ -29,6 +29,7 @@ Only for development and testing purposes.
    * Java SDK 8
    * Java IDE
    * Apache Maven (only for Command Line)
+
 
 ## Running Application
 Please follow carefully step by step instructions below:
@@ -57,13 +58,57 @@ Please follow carefully step by step instructions below:
    ```
    CREATE DATABASE customer;
    ````
-
-### Open Terminal
-
-### Clone this project
+### Open Terminal and clone this project
  ```
  git clone https://github.com/odemur/spring-boot-rest-api.git
  ```
+
+## Notes to use PostgreSQL
+
+1. Add PostgreSQL dependencies on file **pom.xml**
+
+```
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+```
+
+2. Edit the file **"application.properties"** on the directory "src/main/resorces". <br />
+
+**Parameters for PostgreSQL Database**
+```
+#Parameters for PostgreSQL Database 
+#spring.datasource.url = jdbc:postgresql://localhost:5432/customer
+#spring.datasource.username	= postgres
+#spring.datasource.password	= 123
+#spring.jpa.hibernate.ddl-auto = update
+#spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.PostgreSQLDialect
+```
+
+## Notes to user MySQL
+
+1. Add MySQL dependencies on file **pom.xml**
+
+```
+		<dependency>
+			<groupId>com.mysql</groupId>
+			<artifactId>mysql-connector-j</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+```
+2. Edit the file **"application.properties"** on the directory "src/main/resorces". <br />
+
+**Parameters for MySQL Database**
+```
+spring.datasource.url = jdbc:mysql://localhost:3306/customer
+spring.datasource.username = root
+spring.datasource.password = 123
+spring.jpa.hibernate.ddl-auto = update
+spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.MySQL5Dialect
+```
+
 #### Running this application with IDE:
    - Open this project folder with any Java IDE (IntelliJ IDEA, Eclipse, etc..)
    - Run the application using the IDE > Run Option
