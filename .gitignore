@@ -1,6 +1,9 @@
-/.project
 /.classpath
+/.DS_Store
 /.factorypath
+/.project
+/config
 /HELP.md
 /mvnw
 /mvnw.cmd
+/target/
