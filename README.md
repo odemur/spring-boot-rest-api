@@ -6,7 +6,7 @@ A REST API built on Java, Spring Boot and H2, PostgreSQL or MySQL Server databas
 https://odemur-spring-boot-rest-api.herokuapp.com/customer
 
 **URL Swagger UI:** <br />
-https://odemur-spring-boot-rest-api.herokuapp.com/swagger-ui/index.html#/customer-controller
+https://odemur-spring-boot-rest-api.herokuapp.com/swagger-ui/index.html
 
 ## Screenshot
 
@@ -128,7 +128,7 @@ spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.MySQL5Dialect
  
 ### Create Customer
 
-Create a new Customer from JSON structure.
+Create new customer from JSON structure.
 
 * **Endpoint**
 
@@ -191,7 +191,7 @@ Create a new Customer from JSON structure.
        ```
   
 ### List Customer by Id
-Returns JSON of a specific Customer by ID.
+Returns JSON of a specific customer by ID.
  
 * **Endpoint**
  
@@ -224,7 +224,7 @@ Returns JSON of a specific Customer by ID.
 
 ### Update Customer
 
-  Updates Customer with the values sent as JSON structure.<br />
+  Updates customer with the values sent as JSON.<br />
   Returns an updated JSON structure.
 
 * **Endpoint**
@@ -266,7 +266,7 @@ Returns JSON of a specific Customer by ID.
     ```
     
 ### Delete Customer
-Delete a Customer by ID.
+Delete customer by ID.
  
 * **Endpoint**
  
