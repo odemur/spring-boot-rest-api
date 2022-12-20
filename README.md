@@ -78,11 +78,11 @@ Please follow carefully step by step instructions below:
 
 **Parameters for PostgreSQL**
 ```
-#spring.datasource.url = jdbc:postgresql://localhost:5432/customer
-#spring.datasource.username	= postgres
-#spring.datasource.password	= 123
-#spring.jpa.hibernate.ddl-auto = update
-#spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.PostgreSQLDialect
+spring.datasource.url = jdbc:postgresql://localhost:5432/customer
+spring.datasource.username	= postgres
+spring.datasource.password	= 123
+spring.jpa.hibernate.ddl-auto = update
+spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.PostgreSQLDialect
 ```
 
 ## Notes to use MySQL
