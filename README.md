@@ -107,6 +107,15 @@ spring.jpa.hibernate.ddl-auto = update
 spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.MySQL5Dialect
 ```
 
+SQL Server Database Configuration
+```
+spring.datasource.url=jdbc:sqlserver://localhost:1433;databaseName=customer
+spring.datasource.username=your_sql_server_username
+spring.datasource.password=your_sql_server_password
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.SQLServerDialect
+```
+
 #### Running this application with IDE:
    - Open this project folder with any Java IDE (IntelliJ IDEA, Eclipse, etc..)
    - Run the application using the IDE > Run Option
